@@ -19,3 +19,17 @@ class TestSequenceAligner(unittest.TestCase):
 
         self.assertIsNotNone(best_alignment)
         self.assertGreaterEqual(normalized_score, 0)
+
+    @parameterized.expand([
+        ('MKTIIALSYIFCLVFADYKDDDDK', 'MKTIIALSYIFCLVFADYKDDDDK'),
+        ('MKTIIALSYIFCLVFADYKDDDDK', 'MKTIIALSYIFCLVFADYKKD'),
+        ('MEEPQSDPSVEPPLSQETFS', 'MDDLMLSPDDIEQWFTEDPG'),
+        ('MEEPQSDPSVEPPLSQETFS', 'MFCQLAKTCPVQLWVDSTPP'),
+        ('MEEPQSDPSVEPPLSQETFS', 'HYNYMCNSSCMGGMNRRPIL'),
+        ('MEEPQSDPSVEPPLSQETFS', 'MEEPQSDPSVEPPLSQETFS')])
+    def test_align_local_protein_sequence_returns_best_alignment_and_normalized_score(self, seq1:str, seq2:str):
+        aligner = SequenceAligner()
+        best_alignment, normalized_score = aligner.align_local_protein_sequence(seq1, seq2)
+
+        self.assertIsNotNone(best_alignment)
+        self.assertGreaterEqual(normalized_score, 0)
