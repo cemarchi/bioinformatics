@@ -10,7 +10,7 @@ class GOSimilarity:
         self.__ontology = fastsemsim.load_ontology(source_file=obo_file, file_type='obo', ontology_type='GeneOntology')
         self.__annotation_corpus = fastsemsim.load_ac(self.__ontology, source_file=gaf_file, file_type='gaf-2.0')
             
-    def is_semantic_similar(self, protein_id1:str, protein_id2:str, go_term_category:str='molecular_function'):           
+    def are_semantic_similar(self, protein_id1:str, protein_id2:str, go_term_category:str='molecular_function'):           
         go_semantic_similarity = fastsemsim.init_batchsemsim(ontology=self.__ontology, 
                                                              ac=self.__annotation_corpus, 
                                                              semsim_type = 'obj', 

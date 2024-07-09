@@ -18,7 +18,7 @@ class TestGoSimilarity(unittest.TestCase):
         ('O75884', 'Q9NQB0', 'molecular_function')
     ])
     def test_is_semantic_similar_returns_similar_distance_rate(self, protein_id1:str, protein_id2:str, go_term_category:str):       
-        score = self.__go_similarity.is_semantic_similar(protein_id1, protein_id2, go_term_category)
+        score = self.__go_similarity.are_semantic_similar(protein_id1, protein_id2, go_term_category)
 
         self.assertIsNotNone(score)
         self.assertGreaterEqual(score, 0)
@@ -29,7 +29,7 @@ class TestGoSimilarity(unittest.TestCase):
         ('O75884', 'A0A287D2U3', 'molecular_function')
     ])
     def test_is_semantic_similar_returns_not_similar(self, protein_id1:str, protein_id2:str, go_term_category:str):       
-        score = self.__go_similarity.is_semantic_similar(protein_id1, protein_id2, go_term_category)
+        score = self.__go_similarity.are_semantic_similar(protein_id1, protein_id2, go_term_category)
 
         self.assertIsNotNone(score)
         self.assertLess(score, 0)
