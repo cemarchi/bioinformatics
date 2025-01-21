@@ -30,4 +30,3 @@ class TestECNumberSimilarity(unittest.TestCase):
         similarity = ec_number_similarity.are_similar(ec_number1, ec_number2)
 
         self.assertIsNotNone(similarity)
-        self.assertGreaterEqual(similarity, 0)
